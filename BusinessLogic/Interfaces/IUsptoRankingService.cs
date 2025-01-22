@@ -12,7 +12,7 @@ namespace BusinessLogicLayer.Interfaces
     public interface IUsptoRankingService
     { 
         Task<List<dynamic>> GetTopTeam();
-        Task<List<dynamic>> GetSalesSummary(); 
+        Task<dynamic> GetSalesSummary(); 
         Task<List<dynamic>> GetAgent();
         Task<dynamic> GetAgentOfTheDay();
         Task<List<dynamic>> GetClosing();

@@ -20,16 +20,18 @@ namespace DataAccessLayer.Repositories
             _httpContextAccessor = httpContextAccessor;
         }
         
-        public async Task<List<dynamic>> GetSalesSummary()
+        public async Task<dynamic> GetSalesSummary()
         {
             try
             {
                 using (IDbConnection con = _context.CreateConnection())
                 {
-                    var parameters = new
-                    { 
-                    };
-                    return (await con.QueryAsync<dynamic>("GetSalesSummary", param: parameters, commandType: CommandType.StoredProcedure)).ToList();
+                    using var multi = await con.QueryMultipleAsync("GetSalesSummary", commandType: CommandType.StoredProcedure);
+
+
+                    var UpSell = (await multi.ReadAsync<dynamic>()).ToList();
+                    var FrontSell = (await multi.ReadAsync<dynamic>()).ToList();
+                    return new { UpSell = UpSell, FrontSell = FrontSell };
                 }
             }
             catch (Exception ex)

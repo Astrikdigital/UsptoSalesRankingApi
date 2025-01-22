@@ -24,7 +24,7 @@ namespace BusinessLogicLayer.Service
            _configuration  = configuration;
 
     } 
-        public async Task<List<dynamic>> GetSalesSummary()
+        public async Task<dynamic> GetSalesSummary()
         {
             try
             {

@@ -6,7 +6,7 @@ namespace DataAccessLayer.Interface
 {
     public interface IUsptoRankingRepository
     { 
-        Task<List<dynamic>> GetSalesSummary();
+        Task<dynamic> GetSalesSummary();
         Task<List<dynamic>> GetTopTeam();
         Task<List<dynamic>> GetAgent();
         Task<List<dynamic>> GetClosing();
