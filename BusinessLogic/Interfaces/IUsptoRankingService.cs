@@ -14,11 +14,16 @@ namespace BusinessLogicLayer.Interfaces
         Task<List<dynamic>> GetTopTeam();
         Task<dynamic> GetSalesSummary(); 
         Task<List<dynamic>> GetAgent();
+        Task<List<dynamic>> GetTeamStructure();
         Task<dynamic> GetAgentOfTheDay();
         Task<List<dynamic>> GetClosing();
         Task<List<dynamic>> GetTeam();
+        Task<List<dynamic>> GetMonths();
         Task<List<dynamic>> GetAgentSales();
         Task<AgentSalesDto> InsertAgentSales(AgentSales Dto);
+        Task<dynamic> InsertTeamAgent(TeamAgent Dto);
+        Task<dynamic> UpdateTeamStructure(TeamAgent Dto);
+        Task<dynamic> DeleteTeamStructure(TeamAgent Dto);
         Task<AgentSalesDto> RefundAgentSales(AgentSales Dto);
     }
 }

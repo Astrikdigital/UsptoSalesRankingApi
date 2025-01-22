@@ -88,6 +88,22 @@ namespace DataAccessLayer.Repositories
             }
 
         }
+
+        public async Task<List<dynamic>> GetMonths()
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                {
+                    return (await con.QueryAsync<dynamic>("API_Select_Months", commandType: CommandType.StoredProcedure)).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
         public async Task<List<dynamic>> GetClosing()
         {
             try
@@ -95,7 +111,7 @@ namespace DataAccessLayer.Repositories
                 using (IDbConnection con = _context.CreateConnection())
                 {
                     
-                    return (await con.QueryAsync<dynamic>("GetClosing", commandType: CommandType.StoredProcedure)).ToList();
+                    return (await con.QueryAsync<dynamic>("API_Select_Closing", commandType: CommandType.StoredProcedure)).ToList();
                 }
             }
             catch (Exception ex)
@@ -170,6 +186,92 @@ namespace DataAccessLayer.Repositories
                         Month = Dto.Month
                     };
                     return (await con.QueryAsync<AgentSalesDto>("RefundAgentSales", param: parameters, commandType: CommandType.StoredProcedure)).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<dynamic> InsertTeamAgent(TeamAgent Dto)
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                {
+                    var parameters = new
+                    {
+                        agentId = Dto.AgentId,
+                        month = Dto.Month,
+                        bench = Dto.Bench,
+                        achive = Dto.Achive,
+                        teamId = Dto.TeamId,
+                        closingId = Dto.ClosingId
+                    };
+                    return (await con.QueryAsync<AgentSalesDto>("Insert_TeamAgent", param: parameters, commandType: CommandType.StoredProcedure)).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+        public async Task<dynamic> UpdateTeamStructure(TeamAgent Dto)
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                {
+                    var parameters = new
+                    {   
+                        id = Dto.Id,
+                        agentId = Dto.AgentId,
+                        month = Dto.Month,
+                        bench = Dto.Bench,
+                        achive = Dto.Achive,
+                        teamId = Dto.TeamId,
+                        closingId = Dto.ClosingId
+                    };
+                    return (await con.QueryAsync<AgentSalesDto>("API_Update_TeamStructure", param: parameters, commandType: CommandType.StoredProcedure)).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<List<dynamic>> GetTeamStructure()
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                {
+                    return (await con.QueryAsync<dynamic>("API_Select_TeamStructure", commandType: CommandType.StoredProcedure)).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+
+
+        public async Task<dynamic> DeleteTeamStructure(TeamAgent Dto)
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                {
+                    var parameters = new
+                    {
+                        id = Dto.Id,
+                    };
+                    return (await con.QueryAsync<dynamic>("API_Delete_TeamStructure", param: parameters, commandType: CommandType.StoredProcedure)).FirstOrDefault();
                 }
             }
             catch (Exception ex)

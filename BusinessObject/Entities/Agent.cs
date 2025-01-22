@@ -34,4 +34,16 @@ namespace BusinessObjectsLayer.Entities
         public string? TeamName { get; set; }
         public string? TeamLogo { get; set; }
     }
+
+
+    public class TeamAgent
+    {
+        public int? Id { get; set; }
+        public int? AgentId { get; set; }
+        public int? Month { get; set; }
+        public int? Bench { get; set; }
+        public int? Achive { get; set; }
+        public int? TeamId { get; set; }
+        public int? ClosingId { get; set; }
+    }
 }

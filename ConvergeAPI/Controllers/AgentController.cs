@@ -150,6 +150,7 @@ namespace ConvergeAPI.Controllers
             }
             return Ok(null);
         }
+
         [HttpGet("GetAgentOfTheDay")]
         public async Task<IActionResult> GetAgentOfTheDay()
         {
@@ -164,5 +165,87 @@ namespace ConvergeAPI.Controllers
             }
             return Ok(null);
         }
+
+        [HttpGet("GetTeamStructure")]
+        public async Task<IActionResult> GetTeamStructure()
+        {
+            try
+            {
+                var data = await _usptoRankingService.GetTeamStructure();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
+
+        [HttpPost("CreateTeamStructure")]
+        public async Task<IActionResult> InsertTeamAgent(TeamAgent Dto)
+        {
+            try
+            {
+                var rankings = await _usptoRankingService.InsertTeamAgent(Dto);
+                await _hubContext.Clients.All.SendAsync("AddTeamStructure");
+                return Ok(rankings);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
+
+
+        [HttpPost("UpdateTeamStructure")]
+        public async Task<IActionResult> UpdateTeamStructure(TeamAgent Dto)
+        {
+            try
+            {
+                var rankings = await _usptoRankingService.UpdateTeamStructure(Dto);
+                await _hubContext.Clients.All.SendAsync("AddTeamStructure");
+                return Ok(rankings);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
+
+
+        [HttpPost("DeleteTeamStructure")]
+        public async Task<IActionResult> DeleteTeamStructure(TeamAgent Dto)
+        {
+            try
+            {
+                var rankings = await _usptoRankingService.DeleteTeamStructure(Dto);
+                return Ok(rankings);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
+
+
+        [HttpGet("GetMonths")]
+        public async Task<IActionResult> GetMonths()
+        {
+            try
+            {
+                var rankings = await _usptoRankingService.GetMonths();
+                return Ok(rankings);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
+
+
     }
 }

@@ -69,6 +69,17 @@ namespace BusinessLogicLayer.Service
                 return null;
             }
         }
+        public async Task<List<dynamic>> GetMonths()
+        {
+            try
+            {
+                return await _usptoRankingRepository.GetMonths();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public async Task<List<dynamic>> GetClosing()
         {
             try
@@ -102,6 +113,29 @@ namespace BusinessLogicLayer.Service
                 return null;
             }
         }
+        public async Task<dynamic> InsertTeamAgent(TeamAgent Dto)
+        {
+            try
+            {
+                return await _usptoRankingRepository.InsertTeamAgent(Dto);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<dynamic> UpdateTeamStructure(TeamAgent Dto)
+        {
+            try
+            {
+                return await _usptoRankingRepository.UpdateTeamStructure(Dto);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public async Task<AgentSalesDto> RefundAgentSales(AgentSales Dto)
         {
             try
@@ -124,5 +158,31 @@ namespace BusinessLogicLayer.Service
                 return null;
             }
         }
+
+
+        public async Task<List<dynamic>> GetTeamStructure()
+        {
+            try
+            {
+                return await _usptoRankingRepository.GetTeamStructure();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<dynamic> DeleteTeamStructure(TeamAgent Dto)
+        {
+            try
+            {
+                return await _usptoRankingRepository.DeleteTeamStructure(Dto);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }
