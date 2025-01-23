@@ -123,7 +123,15 @@ namespace ConvergeAPI.Controllers
                 var rankings = await _usptoRankingService.InsertAgentSales(Dto);
                 var List = await _usptoRankingService.GetSalesSummary();
                 rankings.AchivedSale = Dto.Amount;
+                if (rankings.TopicId == 1)
+                {
                 await _hubContext.Clients.All.SendAsync("InsertAgentSales", new { Data = rankings, List = List });
+
+                }
+                else
+                {
+                    await _hubContext.Clients.All.SendAsync("AddTeamStructure");
+                }
                 return Ok(rankings);
             }
             catch (Exception ex)

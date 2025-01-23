@@ -33,6 +33,7 @@ namespace BusinessObjectsLayer.Entities
         public string? AgentName { get; set; }
         public string? TeamName { get; set; }
         public string? TeamLogo { get; set; }
+        public int TopicId { get; set; }
     }
 
 
