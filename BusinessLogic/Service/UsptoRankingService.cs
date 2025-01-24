@@ -207,5 +207,29 @@ namespace BusinessLogicLayer.Service
             }
         }
 
+        public async Task<dynamic> DeleteAgent(Agents Dto)
+        {
+            try
+            {
+                return await _usptoRankingRepository.DeleteAgent(Dto);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<dynamic> DeleteTeam(Teams Dto)
+        {
+            try
+            {
+                return await _usptoRankingRepository.DeleteTeam(Dto);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }

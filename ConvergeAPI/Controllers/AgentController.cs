@@ -285,6 +285,37 @@ namespace ConvergeAPI.Controllers
             return Ok(null);
         }
 
+        [HttpPost("DeleteAgent")]
+        public async Task<IActionResult> DeleteAgent(Agents Dto)
+        {
+            try
+            {
+                var rankings = await _usptoRankingService.DeleteAgent(Dto);
+                return Ok(rankings);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
+
+
+        [HttpPost("DeleteTeam")]
+        public async Task<IActionResult> DeleteTeam(Teams Dto)
+        {
+            try
+            {
+                var rankings = await _usptoRankingService.DeleteTeam(Dto);
+                return Ok(rankings);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
+
 
     }
 }

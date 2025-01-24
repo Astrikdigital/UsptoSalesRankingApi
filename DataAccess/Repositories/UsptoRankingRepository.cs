@@ -322,6 +322,45 @@ namespace DataAccessLayer.Repositories
                 return null;
             }
         }
+        public async Task<dynamic> DeleteAgent(Agents Dto)
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                {
+                    var parameters = new
+                    {
+                        id = Dto.Id,
+                    };
+                    return (await con.QueryAsync<dynamic>("API_Delete_Agent", param: parameters, commandType: CommandType.StoredProcedure)).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<dynamic> DeleteTeam(Teams Dto)
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                {
+                    var parameters = new
+                    {
+                        id = Dto.Id,
+                    };
+                    return (await con.QueryAsync<dynamic>("API_Delete_Team", param: parameters, commandType: CommandType.StoredProcedure)).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
 
     }
 }

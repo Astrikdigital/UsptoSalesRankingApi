@@ -27,5 +27,8 @@ namespace BusinessLogicLayer.Interfaces
         Task<dynamic> UpdateTeamStructure(TeamAgent Dto);
         Task<dynamic> DeleteTeamStructure(TeamAgent Dto);
         Task<AgentSalesDto> RefundAgentSales(AgentSales Dto);
+        Task<dynamic> DeleteAgent(Agents Dto);
+        Task<dynamic> DeleteTeam(Teams Dto);
+
     }
 }

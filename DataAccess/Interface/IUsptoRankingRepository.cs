@@ -22,6 +22,9 @@ namespace DataAccessLayer.Interface
         Task<dynamic> DeleteTeamStructure(TeamAgent Dto);
         Task<AgentSalesDto> RefundAgentSales(AgentSales Dto);
         Task<dynamic> GetAgentOfTheDay();
+        Task<dynamic> DeleteAgent(Agents Dto);
+        Task<dynamic> DeleteTeam(Teams Dto);
+
 
 
     }
