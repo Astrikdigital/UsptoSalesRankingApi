@@ -322,7 +322,7 @@ namespace DataAccessLayer.Repositories
                 return null;
             }
         }
-        public async Task<dynamic> DeleteAgent(Agents Dto)
+        public async Task<dynamic> DeleteAgent(Delete Dto)
         {
             try
             {
@@ -341,7 +341,7 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        public async Task<dynamic> DeleteTeam(Teams Dto)
+        public async Task<dynamic> DeleteTeam(Delete Dto)
         {
             try
             {

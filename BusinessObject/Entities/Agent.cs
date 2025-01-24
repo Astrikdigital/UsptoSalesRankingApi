@@ -65,4 +65,12 @@ namespace BusinessObjectsLayer.Entities
 
     }
 
+
+    public class Delete
+    {
+        public int? Id { get; set; }
+
+    }
+
+
 }

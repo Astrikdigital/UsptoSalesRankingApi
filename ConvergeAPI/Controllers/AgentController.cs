@@ -299,7 +299,7 @@ namespace ConvergeAPI.Controllers
         }
 
         [HttpPost("DeleteAgent")]
-        public async Task<IActionResult> DeleteAgent(Agents Dto)
+        public async Task<IActionResult> DeleteAgent(Delete Dto)
         {
             try
             {
@@ -315,7 +315,7 @@ namespace ConvergeAPI.Controllers
 
 
         [HttpPost("DeleteTeam")]
-        public async Task<IActionResult> DeleteTeam(Teams Dto)
+        public async Task<IActionResult> DeleteTeam(Delete Dto)
         {
             try
             {

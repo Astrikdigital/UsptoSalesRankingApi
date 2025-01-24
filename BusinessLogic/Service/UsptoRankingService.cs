@@ -207,7 +207,7 @@ namespace BusinessLogicLayer.Service
             }
         }
 
-        public async Task<dynamic> DeleteAgent(Agents Dto)
+        public async Task<dynamic> DeleteAgent(Delete Dto)
         {
             try
             {
@@ -219,7 +219,7 @@ namespace BusinessLogicLayer.Service
             }
         }
 
-        public async Task<dynamic> DeleteTeam(Teams Dto)
+        public async Task<dynamic> DeleteTeam(Delete Dto)
         {
             try
             {
