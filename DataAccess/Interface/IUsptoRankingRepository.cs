@@ -13,6 +13,8 @@ namespace DataAccessLayer.Interface
         Task<List<dynamic>> GetClosing();
         Task<List<dynamic>> GetTeam();
         Task<List<dynamic>> GetMonths();
+        Task<dynamic> InsertAgent(Agents Dto);
+        Task<dynamic> InsertUpdateTeam(Teams Dto);
         Task<List<dynamic>> GetAgentSales();
         Task<AgentSalesDto> InsertAgentSales(AgentSales Dto);
         Task<dynamic> InsertTeamAgent(TeamAgent Dto);

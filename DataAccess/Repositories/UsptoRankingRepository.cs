@@ -279,5 +279,49 @@ namespace DataAccessLayer.Repositories
                 return null;
             }
         }
+        public async Task<dynamic> InsertAgent(Agents Dto)
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                {
+                    var parameters = new
+                    {
+                        Id = Dto.Id,
+                        name = Dto.Name,
+                        teamId = Dto.TeamId,
+                        roleId = Dto.RoleId,
+                        isCordinator = Dto.IsCordinator
+                    };
+                    return (await con.QueryAsync<dynamic>("API_Insert_Update_Agent", param: parameters, commandType: CommandType.StoredProcedure)).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<dynamic> InsertUpdateTeam(Teams Dto)
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                {
+                    var parameters = new
+                    {
+                        id = Dto.Id,
+                        name = Dto.Name,
+                        logo = Dto.Logo
+                    };
+                    return (await con.QueryAsync<dynamic>("API_Insert_Update_Team", param: parameters, commandType: CommandType.StoredProcedure)).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }
