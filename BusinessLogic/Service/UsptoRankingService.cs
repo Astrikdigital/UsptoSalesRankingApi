@@ -184,5 +184,28 @@ namespace BusinessLogicLayer.Service
             }
         }
 
+        public async Task<dynamic> InsertAgent(Agents Dto)
+        {
+            try
+            {
+                return await _usptoRankingRepository.InsertAgent(Dto);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public async Task<dynamic> InsertUpdateTeam(Teams Dto)
+        {
+            try
+            {
+                return await _usptoRankingRepository.InsertUpdateTeam(Dto);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }

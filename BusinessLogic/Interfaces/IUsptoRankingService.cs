@@ -21,6 +21,8 @@ namespace BusinessLogicLayer.Interfaces
         Task<List<dynamic>> GetMonths();
         Task<List<dynamic>> GetAgentSales();
         Task<AgentSalesDto> InsertAgentSales(AgentSales Dto);
+        Task<dynamic> InsertAgent(Agents Dto);
+        Task<dynamic> InsertUpdateTeam(Teams Dto);
         Task<dynamic> InsertTeamAgent(TeamAgent Dto);
         Task<dynamic> UpdateTeamStructure(TeamAgent Dto);
         Task<dynamic> DeleteTeamStructure(TeamAgent Dto);

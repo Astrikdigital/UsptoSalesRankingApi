@@ -253,7 +253,22 @@ namespace ConvergeAPI.Controllers
             }
             return Ok(null);
         }
-        [HttpGet("OnPageReload")]
+
+        [HttpPost("InsertUpdateAgent")]
+        public async Task<IActionResult> InsertAgent(Agents Dto)
+        {
+            try
+            {
+                var agents = await _usptoRankingService.InsertAgent(Dto);
+                return Ok(agents);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
+[HttpGet("OnPageReload")]
         public async Task<IActionResult> OnPageReload()
         {
             try
@@ -267,6 +282,22 @@ namespace ConvergeAPI.Controllers
             }
             return Ok(null);
         }
+
+        [HttpPost("InsertUpdateTeam")]
+        public async Task<IActionResult> InsertUpdateTeam(Teams Dto)
+        {
+            try
+            {
+                var teams = await _usptoRankingService.InsertUpdateTeam(Dto);
+                return Ok(teams);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
+
 
     }
 }
