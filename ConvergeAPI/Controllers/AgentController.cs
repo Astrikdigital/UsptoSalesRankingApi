@@ -268,7 +268,20 @@ namespace ConvergeAPI.Controllers
             }
             return Ok(null);
         }
-
+[HttpGet("OnPageReload")]
+        public async Task<IActionResult> OnPageReload()
+        {
+            try
+            {
+                await _hubContext.Clients.All.SendAsync("OnPageReload");
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
 
         [HttpPost("InsertUpdateTeam")]
         public async Task<IActionResult> InsertUpdateTeam(Teams Dto)
