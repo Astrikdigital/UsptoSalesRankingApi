@@ -340,7 +340,7 @@ namespace DataAccessLayer.Repositories
                 return null;
             }
         }
-
+        
         public async Task<dynamic> DeleteTeam(Delete Dto)
         {
             try
@@ -352,6 +352,20 @@ namespace DataAccessLayer.Repositories
                         id = Dto.Id,
                     };
                     return (await con.QueryAsync<dynamic>("API_Delete_Team", param: parameters, commandType: CommandType.StoredProcedure)).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public async Task<dynamic> GetTotalBench()
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                { 
+                    return (await con.QueryAsync<dynamic>("GetTotalBench", commandType: CommandType.StoredProcedure)).FirstOrDefault();
                 }
             }
             catch (Exception ex)

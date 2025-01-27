@@ -328,6 +328,20 @@ namespace ConvergeAPI.Controllers
             }
             return Ok(null);
         }
+        [HttpGet("GetTotalBench")]
+        public async Task<IActionResult> GetTotalBench()
+        {
+            try
+            {
+                var rankings = await _usptoRankingService.GetTotalBench();
+                return Ok(rankings);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
 
 
     }
