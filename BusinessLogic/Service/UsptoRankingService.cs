@@ -160,11 +160,11 @@ namespace BusinessLogicLayer.Service
         }
 
 
-        public async Task<List<dynamic>> GetTeamStructure()
+        public async Task<List<dynamic>> GetTeamStructure(string? searchText = null, int? monthId = null, int? year = null, int? pageNumber = 50, int? pageSize = 0)
         {
             try
             {
-                return await _usptoRankingRepository.GetTeamStructure();
+                return await _usptoRankingRepository.GetTeamStructure(searchText,monthId,year,pageNumber,pageSize);
             }
             catch (Exception ex)
             {

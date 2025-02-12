@@ -8,7 +8,7 @@ namespace DataAccessLayer.Interface
     { 
         Task<dynamic> GetSalesSummary();
         Task<List<dynamic>> GetTopTeam();
-        Task<List<dynamic>> GetTeamStructure();
+        Task<List<dynamic>> GetTeamStructure(string? searchText = null, int? monthId = null, int? year = null, int? pageNumber = 50, int? pageSize = 0);
         Task<List<dynamic>> GetAgent();
         Task<List<dynamic>> GetClosing();
         Task<List<dynamic>> GetTeam();

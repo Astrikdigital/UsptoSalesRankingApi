@@ -3,6 +3,8 @@ using BusinessLogicLayer.Response;
 using BusinessLogicLayer.Service;
 using BusinessObjectsLayer.Entities;
 using ConvergeAPI.HUBS;
+using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR; 
@@ -175,11 +177,11 @@ namespace ConvergeAPI.Controllers
         }
 
         [HttpGet("GetTeamStructure")]
-        public async Task<IActionResult> GetTeamStructure()
+        public async Task<IActionResult> GetTeamStructure(string? searchText = null, int? monthId = null, int? year = null, int? pageNumber = 50, int? pageSize = 0)
         {
             try
             {
-                var data = await _usptoRankingService.GetTeamStructure();
+                var data = await _usptoRankingService.GetTeamStructure(searchText,monthId,year,pageNumber,pageSize);
                 return Ok(data);
             }
             catch (Exception ex)

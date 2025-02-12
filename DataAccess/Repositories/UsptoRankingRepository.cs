@@ -244,13 +244,23 @@ namespace DataAccessLayer.Repositories
             }
         }
 
-        public async Task<List<dynamic>> GetTeamStructure()
+        public async Task<List<dynamic>> GetTeamStructure(string? searchText = null, int? monthId = null, int? year = null, int? pageNumber = 50, int? pageSize = 0)
         {
             try
             {
                 using (IDbConnection con = _context.CreateConnection())
                 {
-                    return (await con.QueryAsync<dynamic>("API_Select_TeamStructure", commandType: CommandType.StoredProcedure)).ToList();
+                    var parameters = new
+                    {
+                        searchText = searchText,
+                        monthId = monthId,
+                        year = year,
+                        PageSize = pageSize,
+                        PageNumber = pageNumber
+                        
+                    };
+
+                    return (await con.QueryAsync<dynamic>("API_Select_TeamStructureV2", param: parameters, commandType: CommandType.StoredProcedure)).ToList();
                 }
             }
             catch (Exception ex)
