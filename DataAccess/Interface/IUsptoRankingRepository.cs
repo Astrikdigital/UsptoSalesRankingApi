@@ -24,6 +24,8 @@ namespace DataAccessLayer.Interface
         Task<dynamic> GetAgentOfTheDay();
         Task<dynamic> DeleteAgent(Delete Dto);
         Task<dynamic> DeleteTeam(Delete Dto);
+        Task<dynamic> GetTotalBench();
+        
 
 
 

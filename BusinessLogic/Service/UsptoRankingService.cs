@@ -230,6 +230,17 @@ namespace BusinessLogicLayer.Service
                 return null;
             }
         }
-
+        public async Task<dynamic> GetTotalBench()
+        {
+            try
+            {
+                return await _usptoRankingRepository.GetTotalBench();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        
     }
 }

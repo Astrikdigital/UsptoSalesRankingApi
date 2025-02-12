@@ -29,6 +29,8 @@ namespace BusinessLogicLayer.Interfaces
         Task<AgentSalesDto> RefundAgentSales(AgentSales Dto);
         Task<dynamic> DeleteAgent(Delete Dto);
         Task<dynamic> DeleteTeam(Delete Dto);
+        Task<dynamic> GetTotalBench();
+        
 
     }
 }
