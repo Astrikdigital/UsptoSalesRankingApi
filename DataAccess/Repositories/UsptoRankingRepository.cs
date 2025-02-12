@@ -260,7 +260,7 @@ namespace DataAccessLayer.Repositories
                         
                     };
 
-                    return (await con.QueryAsync<dynamic>("API_Select_TeamStructureV2", param: parameters, commandType: CommandType.StoredProcedure)).ToList();
+                    return (await con.QueryAsync<dynamic>("API_Select_TeamStructure", param: parameters, commandType: CommandType.StoredProcedure)).ToList();
                 }
             }
             catch (Exception ex)
