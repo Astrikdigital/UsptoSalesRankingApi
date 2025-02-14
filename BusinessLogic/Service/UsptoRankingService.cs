@@ -147,6 +147,17 @@ namespace BusinessLogicLayer.Service
                 return null;
             }
         }
+        public async Task<dynamic> DisabledFrontor(Delete Dto)
+        {
+            try
+            {
+                return await _usptoRankingRepository.DisabledFrontor(Dto);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public async Task<dynamic> GetAgentOfTheDay()
         {
             try
@@ -241,6 +252,30 @@ namespace BusinessLogicLayer.Service
                 return null;
             }
         }
-        
+
+        public async Task<dynamic> InsertFrontorOfTheDay(FrontorModel Dto)
+        {
+            try
+            {
+                return await _usptoRankingRepository.InsertFrontorOfTheDay(Dto);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<dynamic> GetFrontorOfTheDay()
+        {
+            try
+            {
+                return await _usptoRankingRepository.GetFrontorOfTheDay();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }

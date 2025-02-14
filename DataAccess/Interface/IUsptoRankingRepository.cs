@@ -21,11 +21,14 @@ namespace DataAccessLayer.Interface
         Task<dynamic> UpdateTeamStructure(TeamAgent Dto);
         Task<dynamic> DeleteTeamStructure(TeamAgent Dto);
         Task<AgentSalesDto> RefundAgentSales(AgentSales Dto);
+        Task<dynamic> DisabledFrontor(Delete Dto);
         Task<dynamic> GetAgentOfTheDay();
+        Task<dynamic> GetFrontorOfTheDay();
         Task<dynamic> DeleteAgent(Delete Dto);
         Task<dynamic> DeleteTeam(Delete Dto);
         Task<dynamic> GetTotalBench();
-        
+        Task<dynamic> InsertFrontorOfTheDay(FrontorModel Dto);
+
 
 
 

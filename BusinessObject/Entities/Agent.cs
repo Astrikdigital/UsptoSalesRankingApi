@@ -46,6 +46,7 @@ namespace BusinessObjectsLayer.Entities
         public int? Achive { get; set; }
         public int? TeamId { get; set; }
         public int? ClosingId { get; set; }
+        public int? Year { get; set; }
     }
 
     public class Agents
@@ -69,6 +70,14 @@ namespace BusinessObjectsLayer.Entities
     public class Delete
     {
         public int? Id { get; set; }
+
+    }
+
+    public class FrontorModel
+    {
+        public int? AgentId { get; set; }
+        public bool? IsEnabled { get; set; }
+        public string? ScreenTitle { get; set; }
 
     }
 

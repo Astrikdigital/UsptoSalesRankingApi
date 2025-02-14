@@ -16,6 +16,7 @@ namespace BusinessLogicLayer.Interfaces
         Task<List<dynamic>> GetAgent();
         Task<List<dynamic>> GetTeamStructure(string? searchText = null, int? monthId = null, int? year = null, int? pageNumber = 50, int? pageSize = 0);
         Task<dynamic> GetAgentOfTheDay();
+        Task<dynamic> GetFrontorOfTheDay();
         Task<List<dynamic>> GetClosing();
         Task<List<dynamic>> GetTeam();
         Task<List<dynamic>> GetMonths();
@@ -24,9 +25,11 @@ namespace BusinessLogicLayer.Interfaces
         Task<dynamic> InsertAgent(Agents Dto);
         Task<dynamic> InsertUpdateTeam(Teams Dto);
         Task<dynamic> InsertTeamAgent(TeamAgent Dto);
+        Task<dynamic> InsertFrontorOfTheDay(FrontorModel Dto);
         Task<dynamic> UpdateTeamStructure(TeamAgent Dto);
         Task<dynamic> DeleteTeamStructure(TeamAgent Dto);
         Task<AgentSalesDto> RefundAgentSales(AgentSales Dto);
+        Task<dynamic> DisabledFrontor(Delete Dto);
         Task<dynamic> DeleteAgent(Delete Dto);
         Task<dynamic> DeleteTeam(Delete Dto);
         Task<dynamic> GetTotalBench();

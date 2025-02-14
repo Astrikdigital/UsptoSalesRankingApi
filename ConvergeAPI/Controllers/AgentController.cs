@@ -346,5 +346,54 @@ namespace ConvergeAPI.Controllers
         }
 
 
+        [HttpPost("InsertFrontorOfTheDay")]
+        public async Task<IActionResult> InsertFrontorOfTheDay(FrontorModel Dto)
+        {
+            try
+            {
+                var rankings = await _usptoRankingService.InsertFrontorOfTheDay(Dto);
+                await _hubContext.Clients.All.SendAsync("AddTeamStructure");
+                return Ok(rankings);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
+
+        [HttpGet("GetFrontorOfTheDay")]
+        public async Task<IActionResult> GetFrontorOfTheDay()
+        {
+            try
+            {
+                var data = await _usptoRankingService.GetFrontorOfTheDay();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
+
+        [HttpPost("DisabledFrontor")]
+        public async Task<IActionResult> DisabledFrontor(Delete Dto)
+        {
+            try
+            {
+                var rankings = await _usptoRankingService.DisabledFrontor(Dto);
+                await _hubContext.Clients.All.SendAsync("AddTeamStructure");
+
+                return Ok(rankings);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return Ok(null);
+        }
+
+
     }
 }

@@ -173,6 +173,22 @@ namespace DataAccessLayer.Repositories
             }
 
         }
+
+        public async Task<dynamic> GetFrontorOfTheDay()
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                {
+                    return (await con.QueryAsync<dynamic>("GetFrontorOfTheDay", commandType: CommandType.StoredProcedure)).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
         public async Task<AgentSalesDto> RefundAgentSales(AgentSales Dto)
         {
             try
@@ -207,7 +223,9 @@ namespace DataAccessLayer.Repositories
                         bench = Dto.Bench,
                         achive = Dto.Achive,
                         teamId = Dto.TeamId,
-                        closingId = Dto.ClosingId
+                        closingId = Dto.ClosingId,
+                        year = Dto.Year,
+
                     };
                     return (await con.QueryAsync<AgentSalesDto>("Insert_TeamAgent", param: parameters, commandType: CommandType.StoredProcedure)).FirstOrDefault();
                 }
@@ -376,6 +394,46 @@ namespace DataAccessLayer.Repositories
                 using (IDbConnection con = _context.CreateConnection())
                 { 
                     return (await con.QueryAsync<dynamic>("GetTotalBench", commandType: CommandType.StoredProcedure)).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+        public async Task<dynamic> InsertFrontorOfTheDay(FrontorModel Dto)
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                {
+                    var parameters = new
+                    {
+                        AgentId = Dto.AgentId,
+                        ScreenTitle = Dto.ScreenTitle
+                    };
+                    return (await con.QueryAsync<dynamic>("Insert_FrontorOfTheDay", param: parameters, commandType: CommandType.StoredProcedure)).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<dynamic> DisabledFrontor(Delete Dto)
+        {
+            try
+            {
+                using (IDbConnection con = _context.CreateConnection())
+                {
+                    var parameters = new
+                    {
+                        Id = Dto.Id
+                    };
+                    return (await con.QueryAsync<dynamic>("DisableFrontor", param: parameters, commandType: CommandType.StoredProcedure)).ToList();
                 }
             }
             catch (Exception ex)
